@@ -63,3 +63,27 @@ Playground.argTypes = {
     },
   },
 }
+
+export const PlaceholderExamples = () => (
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '20px',
+      padding: '24px',
+      flexWrap: 'wrap',
+    }}
+  >
+    <Avatar placeholder="S" size={24} />
+    <Avatar placeholder="M" size={32} />
+    <Avatar placeholder="L" size={40} />
+    <Avatar placeholder="XL" size={56} />
+    <Avatar placeholder="XXL" size={72} />
+    <Avatar placeholder="JD" size={56} square />
+    <Avatar
+      src="https://avatars.githubusercontent.com/u/7143434?v=4"
+      placeholder="TEST"
+      size={56}
+    />
+  </div>
+)

@@ -36,6 +36,30 @@ describe('Avatar', () => {
     expect(avatar).toHaveAttribute('src', 'primer.png')
   })
 
+  it('renders placeholder text when src is missing', () => {
+    render(<Avatar placeholder="JD" alt="Jane Doe" data-testid="avatar" />)
+    const avatar = screen.getByTestId('avatar')
+    expect(avatar.tagName).toBe('SPAN')
+    expect(avatar).toHaveTextContent('JD')
+    expect(avatar).toHaveAttribute('role', 'img')
+    expect(avatar).toHaveAttribute('aria-label', 'Jane Doe')
+  })
+
+  it('renders src image instead of placeholder when both props are provided', () => {
+    render(<Avatar src="primer.png" placeholder="JD" alt="Jane Doe" data-testid="avatar" />)
+    const avatar = screen.getByTestId('avatar')
+    expect(avatar.tagName).toBe('IMG')
+    expect(avatar).toHaveAttribute('src', 'primer.png')
+    expect(screen.queryByText('JD')).not.toBeInTheDocument()
+  })
+
+  it('applies square styling attribute to placeholder avatar', () => {
+    render(<Avatar placeholder="JD" square data-testid="avatar" />)
+    const avatar = screen.getByTestId('avatar')
+    expect(avatar.tagName).toBe('SPAN')
+    expect(avatar).toHaveAttribute('data-square')
+  })
+
   it('should support the `style` prop without overriding internal styles', () => {
     render(
       <Avatar
